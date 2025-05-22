@@ -39,10 +39,10 @@ plot(base$date, base$log_pce, type = "l", col="blue",
      xlab="Ano", ylab="Log do gasto com consumo")
 grid()
 
-modelo_ddf <- lm(log_pce ~ psavert + psavert_1 + psavert_l2 + tempo, data=base)
+modelo_ddf <- lm(pce ~ pce_1 + psavert + psavert_1 + psavert_l2 + tempo, data=base)
 summary(modelo_ddf)
 
-modelo_ddf_dummies <- lm(log_pce ~ psavert + psavert_1 + psavert_l2 + tempo + mes01 + mes02 +
+modelo_ddf_dummies <- lm(pce ~ pce_1 + psavert + psavert_1 + psavert_l2 + tempo + mes01 + mes02 +
                    mes03 +
                    mes04 +
                    mes05 +
@@ -72,7 +72,7 @@ plot(modelo_ddf$fitted.values, modelo_ddf$residuals,
 abline(h=0, col='red')
 
 #multicolinearidade
-M <- cor(base[,c("psavert", "psavert_1", "psavert_l2", "tempo")])
+M <- cor(base[,c("pce_1", "psavert", "psavert_1", "psavert_l2", "tempo")])
 M
 
 library(corrplot)
